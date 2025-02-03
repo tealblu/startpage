@@ -9,12 +9,13 @@ async function loadColors() {
   };
 
   try {
-      const response = await fetch('file:///home/indigo/.cache/wal/colors.json');
-      const colors = await response.json();
-      applyColors(colors);
+    console.log('Loading colors...');
+    const response = await fetch('file:///home/indigo/.cache/wal/colors.json');
+    const colors = await response.json();
+    applyColors(colors);
   } catch (error) {
-      console.warn('Color loading failed, using defaults');
-      applyColors(defaultColors);
+    console.warn('Color loading failed, using defaults');
+    applyColors(defaultColors);
   }
 }
 
