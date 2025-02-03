@@ -22,7 +22,7 @@ First, you need to install `pywal` and ensure that Python 3 is installed on your
     ```
 
 - **Install Python dependencies for the webserver**:
-    - In the root of the repository, you'll find a script `pywal-webserver.py` which will serve your "startpage". You might need to install additional dependencies:
+    - In the root of the repository, you'll find a script `pywal-webserver.py` which will serve pywal's CSS to the startpage. You might need to install additional dependencies:
         - `http.server`
         - `os`
         - `socketserver`
