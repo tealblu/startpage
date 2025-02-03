@@ -152,3 +152,63 @@ a:hover {
 #image {
 	padding-right: 1em;
 }
+
+#text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#search-container {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 1.5em;
+}
+
+#search-form {
+  display: flex;
+  align-items: center;
+  background-color: var(--color0);
+  border: 2px solid var(--color8);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+#search-input {
+  flex-grow: 1;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-family: 'SpaceMono Nerd Font', monospace;
+  font-size: 1em;
+  padding: 0.75em 1em;
+  outline: none;
+}
+
+#search-input::placeholder {
+  color: var(--color8);
+  opacity: 0.7;
+}
+
+#search-button {
+  background: none;
+  border: none;
+  color: var(--color8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75em;
+  transition: color 0.3s ease;
+}
+
+#search-button:hover {
+  color: var(--color2);
+}
+
+#search-button svg {
+  width: 20px;
+  height: 20px;
+}
