@@ -66,7 +66,7 @@ Now that your local webserver is running, you need to set the new tab page in Fi
 
 ### 6. Accessing the Startpage
 
-Once everything is set up, open a new tab in Firefox, and you'll see your custom startpage with the pywal-generated color scheme.
+Once everything is set up, open a new tab in Firefox, and you'll see your custom startpage with the pywal-generated color scheme. 
 
 ### 7. Customizing the Startpage
 
