@@ -13,10 +13,12 @@ function showTime() {
     year: "2-digit",
   };
 
-  const formattedDate = date.toLocaleString("en-GB", options);
+  const formattedDate = date.toLocaleString("en-GB", options).toLowerCase();
   const [dayOfWeek, dateStr, time] = formattedDate.split(", ");
 
-  dateElement.innerHTML = `${dayOfWeek}, ${time} | ${dateStr}`;
+  dateStrISO = date.toISOString().split("T")[0];
+
+  dateElement.innerHTML = `${dateStrISO} | ${dayOfWeek}, ${time}`;
 }
 
 setInterval(showTime, 1000);

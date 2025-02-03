@@ -1,3 +1,5 @@
+@import url('file:///home/indigo/.cache/wal/colors.css');
+
 @font-face {
   font-family: "SpaceMono Nerd Font";
   font-display: swap;
@@ -22,7 +24,7 @@ html {
   align-items: center;
   justify-content: center;
   height: 100svh;
-  background-color: var(--background-color);
+  background-color: var(--color0);
   background-image: url("../bgs/topography.svg");
   overflow-x: clip;
 }
@@ -64,6 +66,19 @@ body {
   object-fit: cover;
 }
 
+.wallpaper {
+  height: 550px;
+  aspect-ratio: 9 / 16;
+  border-radius: 6px;
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+}
+
+.wallpaper:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 #image {
   margin-right: 1em;
 }
@@ -83,7 +98,7 @@ body {
 }
 
 #greeting {
-  color: var(--accent-color-2);
+  color: var(--color2);
   font-size: 2.5em;
   font-weight: 900;
   grid-column: 1/-1;
@@ -94,7 +109,7 @@ body {
 #date {
   font-size: 1.3em;
   font-weight: 600;
-  color: var(--accent-color);
+  color: var(--color8);
   display: grid;
   grid-column: 1/-1;
   text-align: center;
@@ -102,7 +117,7 @@ body {
 }
 
 .header {
-  color: var(--accent-color);
+  color: var(--color4);
   font-size: 1.6em;
   font-weight: 600;
 }
@@ -126,11 +141,11 @@ a {
 }
 
 a:hover {
-  color: var(--hover-color);
+  color: var(--color2);
   font-style: italic;
 }
 
-.fazzi .urls:nth-child(even) {
+.indihome .urls:nth-child(even) {
   padding-left: 1.5em;
 }
 
