@@ -1,3 +1,5 @@
+@import url('file:///home/indigo/.cache/wal/colors.css');
+
 @font-face {
   font-family: "SpaceMono Nerd Font";
   font-display: swap;
@@ -22,7 +24,7 @@ html {
   align-items: center;
   justify-content: center;
   height: 100svh;
-  background-color: var(--pywal-color0);
+  background-color: var(--color0);
   background-image: url("../bgs/topography.svg");
   overflow-x: clip;
 }
@@ -96,7 +98,7 @@ body {
 }
 
 #greeting {
-  color: var(--pywal-color2);
+  color: var(--color2);
   font-size: 2.5em;
   font-weight: 900;
   grid-column: 1/-1;
@@ -107,7 +109,7 @@ body {
 #date {
   font-size: 1.3em;
   font-weight: 600;
-  color: var(--pywal-color8);
+  color: var(--color8);
   display: grid;
   grid-column: 1/-1;
   text-align: center;
@@ -115,7 +117,7 @@ body {
 }
 
 .header {
-  color: var(--pywal-color4);
+  color: var(--color4);
   font-size: 1.6em;
   font-weight: 600;
 }
@@ -139,7 +141,7 @@ a {
 }
 
 a:hover {
-  color: var(--pywal-color2);
+  color: var(--color2);
   font-style: italic;
 }
 
