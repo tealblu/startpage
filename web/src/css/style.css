@@ -1,4 +1,4 @@
-@import url('http://localhost:8069/colors.css');
+@import url("./colors.css");
 
 @font-face {
   font-family: "SpaceMono Nerd Font";
@@ -141,7 +141,7 @@ a {
 }
 
 a:hover {
-  color: var(--color2);
+  color: var(--color9);
   font-style: italic;
 }
 
@@ -150,7 +150,7 @@ a:hover {
 }
 
 #image {
-	padding-right: 1em;
+  padding-right: 1em;
 }
 
 #text {
@@ -181,7 +181,7 @@ a:hover {
   background: none;
   border: none;
   color: var(--text-color);
-  font-family: 'SpaceMono Nerd Font', monospace;
+  font-family: "SpaceMono Nerd Font", monospace;
   font-size: 1em;
   padding: 0.75em 1em;
   outline: none;
@@ -205,10 +205,85 @@ a:hover {
 }
 
 #search-button:hover {
-  color: var(--color2);
+  color: var(--color9);
 }
 
 #search-button svg {
   width: 20px;
   height: 20px;
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  width: 30px;
+  height: 20px;
+}
+
+.hamburger-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-icon span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-color, white); /* Ensure visibility */
+  transition: all 0.3s ease;
+}
+
+.hamburger-icon.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-icon.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: var(--bg-color, rgba(0, 0, 0, 0.8));
+  transition: left 0.3s ease;
+  z-index: 999;
+  overflow-y: auto;
+  padding-top: 60px;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar-content {
+  padding: 20px;
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  padding: 10px;
+  color: var(--text-color, white);
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }

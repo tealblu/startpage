@@ -1,26 +1,31 @@
 import http.server
 import os
-import socketserver
-from pathlib import Path
-import sys
 import signal
+import socketserver
+import sys
+from pathlib import Path
+
 import psutil
+
 
 def kill_existing_instances():
     """Kill existing instances of this script."""
     current_pid = os.getpid()
-    for proc in psutil.process_iter(['pid', 'cmdline']):
+    for proc in psutil.process_iter(["pid", "cmdline"]):
         try:
             # Check if it's the same script and not the current process
-            if (proc.info['cmdline'] and 
-                sys.argv[0] in proc.info['cmdline'] and 
-                proc.info['pid'] != current_pid):
+            if (
+                proc.info["cmdline"]
+                and sys.argv[0] in proc.info["cmdline"]
+                and proc.info["pid"] != current_pid
+            ):
                 print(f"Killing existing instance (PID {proc.info['pid']})")
-                os.kill(proc.info['pid'], signal.SIGTERM)
+                os.kill(proc.info["pid"], signal.SIGTERM)
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             pass
 
-def create_static_file_server(directory='.', port=8069):
+
+def create_static_file_server(directory=".", port=8069):
     """Create a static file server on port 8069 with file watching."""
     # Kill existing instances
     kill_existing_instances()
@@ -46,9 +51,10 @@ def create_static_file_server(directory='.', port=8069):
     except KeyboardInterrupt:
         print("\nServer stopped.")
 
-def main():
-    directory = "/home/indigo/.cache/wal"
-    create_static_file_server(directory, 8069)
+
+def start(directory="/home/indigo/.cache/wal", port=8069):
+    create_static_file_server(directory, port)
+
 
 if __name__ == "__main__":
-    main()
+    start()

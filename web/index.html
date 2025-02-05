@@ -4,32 +4,56 @@
     <meta charset="UTF-8" />
     <title>~/indi/startpage 💤</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate, max-age=0"
+    />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <link rel="stylesheet" href="http://localhost:8069/colors.css">
-    <link href="./src/css/style.css" rel="stylesheet"/>
+    <script type="text/javascript" src="/eel.js"></script>
+    <link href="./src/css/style.css" rel="stylesheet" />
   </head>
-
   <body class="indihome">
+    <div id="hamburger-menu" class="hamburger-menu">
+      <div class="hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div id="sidebar" class="sidebar">
+      <div class="sidebar-content">
+        <ul class="sidebar-menu">
+          <li><a href="index.html">home</a></li>
+          <li><a href="/pages/settings.html">settings</a></li>
+        </ul>
+      </div>
+    </div>
+
     <div id="image">
-      <img class="wallpaper" src="http://localhost:8069/wallpaper" alt="wallpaper"/>
+      <img
+        id="wallpaper"
+        class="wallpaper"
+        alt="wallpaper"
+        src="./src/images/wallpaper.jpg"
+      />
     </div>
     <div id="text">
       <div id="greeting">welcome, indigo</div>
       <div id="date"></div>
       <div id="links">
         <div class="urls">
-          <div class="header">~/general </div>
+          <div class="header">~/general</div>
           <ul>
             <li><a href="https://google.com">google</a></li>
             <li><a href="https://youtube.com">youtube</a></li>
             <li><a href="https://monkeytype.com/">monkeytype</a></li>
-            <li><a href="https://mail.proton.me/u/2/inbox">protonmail</a></li>
+            <li><a href="https://mail.proton.me/">protonmail</a></li>
           </ul>
         </div>
         <div class="urls">
-          <div class="header">~/devel </div>
+          <div class="header">~/devel</div>
           <ul>
             <li><a href="https://aur.archlinux.org/">AUR</a></li>
             <li>
@@ -46,7 +70,7 @@
           </ul>
         </div>
         <div class="urls">
-          <div class="header">~/reddit </div>
+          <div class="header">~/reddit</div>
           <ul>
             <li><a href="https://reddit.com/">reddit.com</a></li>
             <li><a href="https://reddit.com/r/unixporn/">r/unixporn</a></li>
@@ -59,19 +83,41 @@
         </div>
       </div>
       <div id="search-container" class="search-container">
-        <form id="search-form" action="https://www.google.com/search" method="get">
-            <input type="text" name="q" id="search-input" placeholder="search the web..." autocomplete="off">
-            <button type="submit" id="search-button" class="search-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-            </button>
+        <form
+          id="search-form"
+          action="https://www.google.com/search"
+          method="get"
+        >
+          <input
+            type="text"
+            name="q"
+            id="search-input"
+            placeholder="search the web..."
+            autocomplete="off"
+          />
+          <button type="submit" id="search-button" class="search-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
         </form>
       </div>
     </div>
   </body>
   <script async src="./src/js/date.js"></script>
   <script async src="./src/js/theme.js" currentIndex="0"></script>
-	
+  <script src="./src/js/search.js"></script>
+  <script type="text/javascript" src="./src/js/pywal.js"></script>
+  <script type="text/javascript" src="./src/js/sidebar.js"></script>
 </html>
