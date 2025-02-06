@@ -5,8 +5,8 @@
   font-display: swap;
   src:
     local("SpaceMono Nerd Font"),
-    url(../fonts/SpaceMonoNF.woff2) format("woff2"),
-    url(../fonts/SpaceMonoNF.woff) format("woff");
+    url(/src/fonts/SpaceMonoNF.woff2) format("woff2"),
+    url(/src/fonts/SpaceMonoNF.woff) format("woff");
 }
 
 :root {
@@ -25,7 +25,7 @@ html {
   justify-content: center;
   height: 100svh;
   background-color: var(--color0);
-  background-image: url("../bgs/topography.svg");
+  background-image: url("/src/bgs/topography.svg");
   overflow-x: clip;
 }
 
@@ -213,77 +213,87 @@ a:hover {
   height: 20px;
 }
 
-/* Hamburger Menu Styles */
+/* Sidebar Styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Start offscreen */
+  width: 250px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  transition: left 0.3s ease-in-out;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-content {
+  padding: 80px 20px 20px; /* Push content down below the hamburger */
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  margin: 15px 0;
+}
+
+.sidebar-menu a {
+  color: var(--color9);
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+/* Show Sidebar When Active */
+.sidebar.active {
+  left: 0;
+}
+
+/* Hamburger Button Positioning */
 .hamburger-menu {
   position: fixed;
   top: 20px;
   left: 20px;
   z-index: 1000;
+}
+
+/* Hamburger Menu Styles */
+
+.ham {
   cursor: pointer;
-  width: 30px;
-  height: 20px;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 400ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-
-.hamburger-icon {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.hamRotate.active {
+  transform: rotate(45deg);
 }
-
-.hamburger-icon span {
-  width: 100%;
-  height: 3px;
-  background-color: var(--text-color, white); /* Ensure visibility */
-  transition: all 0.3s ease;
+.hamRotate180.active {
+  transform: rotate(180deg);
 }
-
-.hamburger-icon.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+.line {
+  fill: none;
+  transition:
+    stroke-dasharray 400ms,
+    stroke-dashoffset 400ms;
+  stroke: var(--color9);
+  stroke-width: 5.5;
+  stroke-linecap: round;
 }
-
-.hamburger-icon.active span:nth-child(2) {
-  opacity: 0;
+.ham1 .top {
+  stroke-dasharray: 40 139;
 }
-
-.hamburger-icon.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+.ham1 .bottom {
+  stroke-dasharray: 40 180;
 }
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -300px;
-  width: 300px;
-  height: 100%;
-  background-color: var(--bg-color, rgba(0, 0, 0, 0.8));
-  transition: left 0.3s ease;
-  z-index: 999;
-  overflow-y: auto;
-  padding-top: 60px;
+.ham1.active .top {
+  stroke-dashoffset: -98px;
 }
-
-.sidebar.active {
-  left: 0;
-}
-
-.sidebar-content {
-  padding: 20px;
-}
-
-.sidebar-menu {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sidebar-menu li {
-  padding: 10px;
-  color: var(--text-color, white);
-  cursor: pointer;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.sidebar-menu li:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.ham1.active .bottom {
+  stroke-dashoffset: -138px;
 }

@@ -1,23 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const hamburgerMenu = document.getElementById("hamburger-menu");
-  const hamburgerIcon = hamburgerMenu.querySelector(".hamburger-icon");
-  const sidebar = document.getElementById("sidebar");
+  const sidebarContainer = document.getElementById("sidebar-container");
+  if (!sidebarContainer) {
+    console.error('Element with ID "sidebar-container" not found.');
+    return;
+  }
 
-  // Stop event propagation to prevent immediate closure
-  hamburgerMenu.addEventListener("click", function (event) {
-    event.stopPropagation();
-    hamburgerIcon.classList.toggle("active");
-    sidebar.classList.toggle("active");
-  });
+  fetch("/src/components/sidebar.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.text();
+    })
+    .then((html) => {
+      sidebarContainer.innerHTML = html;
 
-  // Prevent sidebar from closing when clicking inside it
-  sidebar.addEventListener("click", function (event) {
-    event.stopPropagation();
-  });
-
-  // Close sidebar when clicking outside
-  document.addEventListener("click", function () {
-    hamburgerIcon.classList.remove("active");
-    sidebar.classList.remove("active");
-  });
+      document.querySelector(".ham").addEventListener("click", function () {
+        document.querySelector(".sidebar").classList.toggle("active");
+      });
+    })
+    .catch((error) => console.error("Error loading sidebar:", error));
 });
