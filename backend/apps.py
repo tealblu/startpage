@@ -16,8 +16,7 @@ app_dirs = [
     *[f"{dir}/applications" for dir in XDG_DATA_DIRS],
 ]
 icon_dirs = [
-    "/usr/share/icons",
-    "/usr/local/share/icons",
+    # indigo @ amethyst in ~/.startpage on git:main x venv [20:39:45]
     "/usr/share/pixmaps",
     os.path.expanduser("~/.icons"),
     os.path.expanduser("~/.local/share/icons"),
@@ -35,7 +34,8 @@ def run_app(exec):
 @eel.expose
 def get_app_list():
     global app_list
-    app_list.clear()
+    if app_list:
+        return app_list
 
     for app_dir in app_dirs:
         if not app_dir or not os.path.isdir(app_dir):
@@ -44,7 +44,6 @@ def get_app_list():
         with os.scandir(app_dir) as entries:
             for entry in entries:
                 if entry.name.endswith(".desktop"):
-                    print(entry.path)
                     app_name, app_icon, launch_cmd = get_app_details(
                         os.path.join(app_dir, entry.name)
                     )
@@ -81,7 +80,7 @@ def get_app_details(desktop_file):
             os.system(f"cp {app_icon_path} {icon_dest_path}")
             # trunk-ignore(bandit/B605)
             os.system(
-                f"magick convert {icon_dest_path} -resize 64x64 {icon_dest_path} > /dev/null 2>&1"
+                f"magick convert {icon_dest_path} -resize 42x42 {icon_dest_path} > /dev/null 2>&1"
             )
 
             app_icon_path = f"src/images/icons/{icon_file_name}"
@@ -117,6 +116,7 @@ def resolve_icon_path(icon_name):
 
 
 def init():
+    get_app_list()
     return
 
 

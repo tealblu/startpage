@@ -29,6 +29,10 @@ function populate_app_grid() {
           appItem.appendChild(appIcon);
         }
 
+        var space = document.createElement("div");
+        space.classList.add("space");
+        appItem.appendChild(space);
+
         appItem.appendChild(appName);
 
         // Add an event listener to run the app exec cmd when clicked
@@ -42,7 +46,43 @@ function populate_app_grid() {
     })
     .catch((error) => {
       console.error("Error fetching app list:", error);
+    })
+    .finally(() => {
+      // Add a search bar above the grid
+      add_search_bar();
     });
+}
+
+// function to add search bar above grid
+function add_search_bar() {
+  // Get the grid container where apps will be populated
+  var grid = document.querySelector(".apps-grid");
+
+  // Create a search input element
+  var searchInput = document.createElement("input");
+  searchInput.setAttribute("type", "text");
+  searchInput.setAttribute("placeholder", "Search for an app...");
+  searchInput.classList.add("search-container");
+
+  // Add an event listener to filter the app grid based on the search query
+  searchInput.addEventListener("input", (event) => {
+    var searchQuery = event.target.value.toLowerCase();
+    var appItems = grid.querySelectorAll(".app-item");
+
+    appItems.forEach((appItem) => {
+      var appName = appItem
+        .querySelector(".app-name")
+        .textContent.toLowerCase();
+      if (appName.includes(searchQuery)) {
+        appItem.style.display = "block";
+      } else {
+        appItem.style.display = "none";
+      }
+    });
+  });
+
+  // Append the search input to the grid
+  grid.parentNode.insertBefore(searchInput, grid);
 }
 
 // Call the function to populate the app grid
