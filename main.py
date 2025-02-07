@@ -18,7 +18,7 @@ def open_google_search(query):
 
 
 def start():
-    # Set up file watcher
+    apps.init()
     event_handler = PywalHandler()
     observer = Observer()
     observer.schedule(event_handler, pywal_directory, recursive=False)

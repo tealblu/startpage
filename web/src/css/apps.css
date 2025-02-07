@@ -1,0 +1,86 @@
+/* Ensure the body or parent container is scrollable */
+body {
+  display: flex;
+  color: var(--text-color);
+  font-family: "SpaceMono Nerd Font", monospace;
+  justify-content: center;
+  align-items: flex-start; /* Aligns the content at the top of the screen */
+  height: 100vh; /* Ensures the height is full screen */
+  overflow: hidden; /* Hides horizontal scroll */
+  flex-direction: column; /* Allows vertical stacking */
+}
+
+/* Grid container for the apps */
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  ); /* Creates flexible columns */
+  gap: 1em;
+  padding: 2em;
+  width: 100%;
+  max-width: 1200px; /* Adjust based on desired max width */
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-y: auto; /* Enables vertical scrolling */
+  max-height: 80vh; /* Makes the grid scrollable within the screen */
+}
+
+/* Individual app item */
+.app-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color5);
+  border-radius: 10px;
+  padding: 1em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  text-align: center;
+  color: var(--text-color);
+  height: 100px; /* Adjust height as needed */
+}
+
+/* App name */
+.app-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-top: 0.5em;
+}
+
+/* Hover effect for app items */
+.app-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive styling */
+@media (max-width: 800px) {
+  .apps-grid {
+    padding: 1em;
+  }
+
+  .app-item {
+    padding: 0.8em;
+    height: 80px; /* Adjust height on small screens */
+  }
+
+  .app-name {
+    font-size: 1em;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.apps-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.apps-grid {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
